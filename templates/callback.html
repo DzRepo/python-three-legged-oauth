@@ -1,0 +1,95 @@
+<HTML>
+<Head>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
+<script>window.twttr = (function(d, s, id) {
+ var js, fjs = d.getElementsByTagName(s)[0],
+  t = window.twttr || {};
+ if (d.getElementById(id)) return t;
+ js = d.createElement(s);
+ js.id = id;
+ js.src = "https://platform.twitter.com/widgets.js";
+ fjs.parentNode.insertBefore(js, fjs);
+
+ t._e = [];
+ t.ready = function(f) {
+  t._e.push(f);
+ };
+ return t;
+}(document, "script", "twitter-wjs"));
+</script>
+<Title>Callback Collector - Results</Title>
+<style>
+tr.border_bottom td {
+  border-bottom:1pt solid black;
+  }
+ 
+body { padding-left: 15px; }
+</style>
+</Head>
+<Body>
+    <H2>Authorization Received.</H2>
+ 
+<P>
+Here are your recent Tweets and engagement data for each.  Only non-zero values are shown.
+ 
+<table border="0px">
+ {% for tweet in tweets %}
+ 	<tr style="border-bottom:1pt solid gray;">
+ 	<td width=550px>
+		<blockquote class="twitter-tweet" data-link-color="#55acee" lang="en">
+			<a href="https://twitter.com/{{tweet.user.screen_name}}/status/{{tweet.id}}"/>
+		</blockquote>
+	</td>
+	<td valign="top" style="border-bottom:1pt solid gray;">
+		<table cellpadding=5 cellspacing=5 width="200">
+		{% if tweet.engagements.impressions != "0" %}
+			<tr ><td>Impressions</td><td align="right">{{ tweet.engagements.impressions }}</td></tr>
+		{% endif %}
+		{% if tweet.engagements.engagements != "0" %}
+			<tr ><td>Engagements</td><td align="right" >{{ tweet.engagements.engagements }}</td></tr>
+		{% endif %}
+		{% if tweet.engagements.favorites != "0" %}
+			<tr><td>Favorites</td><td align="right">{{ tweet.engagements.favorites }}</td></tr>
+		{% endif %}
+		{% if tweet.engagements.replies != "0" %}
+			<tr><td>Replies</td><td align="right">{{ tweet.engagements.replies }}</td></tr>
+		{% endif %}
+		{% if tweet.engagements.retweets != "0" %}
+			<tr><td>ReTweets</td><td align="right">{{ tweet.engagements.retweets }}</td></tr>
+		{% endif %}
+		{% if tweet.engagements.url_clicks != "0" %}
+			<tr><td>URL Clicks</td><td align="right">{{ tweet.engagements.url_clicks }}</td></tr>
+		{% endif %}
+		{% if tweet.engagements.hashtag_clicks != "0" %}
+			<tr><td>Hashtag Clicks</td><td align="right">{{ tweet.engagements.hashtag_clicks }}</td></tr>
+		{% endif %}
+		{% if tweet.engagements.detail_expands != "0" %}
+			<tr><td>Detail Expands</td><td align="right">{{ tweet.engagements.detail_expands }}</td></tr>
+		{% endif %}
+		{% if tweet.engagements.permalink_clicks != "0" %}
+			<tr><td>PermaLink Clicks</td><td align="right">{{ tweet.engagements.permalink_clicks }}</td></tr>
+		{% endif %}
+		{% if tweet.engagements.media_clicks != "0" %}
+			<tr><td>Media Clicks</td><td align="right">{{ tweet.engagements.media_clicks }}</td></tr>
+		{% endif %}
+		{% if tweet.engagements.app_install_attempts != "0" %}
+			<tr><td>App Install Attempts</td><td align="right">{{ tweet.engagements.app_install_attempts }}</td></tr>>
+		{% endif %}
+		{% if tweet.engagements.user_follows != "0" %}
+			<tr><td>User Follows</td><td align="right">{{ tweet.engagements.user_follows }}</td></tr>
+		{% endif %}
+		{% if tweet.engagements.user_profile_clicks != "0" %}
+			<tr><td>User Profile Clicks</td><td align="right">{{ tweet.engagements.user_profile_clicks }}</td></tr>
+		{% endif %}
+		{% if tweet.engagements.video_views != "0" %}
+			<tr><td>Video Views</td><td align="right">{{ tweet.engagements.video_views }}</td></tr>
+		{% endif %}
+		</table>
+	</td>
+ {% endfor %}	
+<table>    
+    
+</Body>
+</HTML>

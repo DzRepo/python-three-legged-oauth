@@ -1,0 +1,38 @@
+<HTML>
+<Head>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<style>
+tr.border_bottom td {
+  border-bottom:1pt solid black;
+  }
+ 
+body { padding-left: 15px; }
+</style>
+<Title>Callback Collector</Title>
+</Head>
+<Body>
+    <H1>Welcome to the Callback Collector!</H1>
+    <H2>Introduction</H2>
+    </P>
+    This web site is used to demonstrate creating a request for, and capturing of, 
+    OAuth token and OAuth Verifier strings that come from Twitter
+     once an account has granted permission to an application.
+    </P>
+    
+    <div class="form-group">
+    Click the button to authorize this app to collect data on behalf of your account</br>
+    <form action="/authorize" method="get">
+     	<input type="submit" class="btn btn-default" value="Authorize Me!">
+    </form>
+	</div>
+   </br>
+   Unless modified, the url for the callback should be in this form:
+	http://{PublicIP}:{{ port }}/callback?oauth_token=KEYVALUE&oauth_verifier=KEYVALUE2</a>
+
+	<P>
+	<div class="bg-info">{{ message }}</div>
+	<div class="bg-danger">{{ error }}</div>
+</Body>
+
+</HTML>
